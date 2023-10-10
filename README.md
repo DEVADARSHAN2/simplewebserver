@@ -21,9 +21,49 @@ Serving the HTML pages.
 Testing the webserver.
 
 ## PROGRAM:
+```
+NAME:DEVADARSHAN A S
+REG NO:212222110007
+
+
+from http.server import HTTPServer, BaseHTTPRequestHandler
+content = """
+<!DOCTYPE html>
+<html>
+<head>
+<title>My webserver</title>
+</head>
+<body>
+<h2 align="center">Top 5 revenue companies </h2>
+<hr>
+<ol>
+<h3>
+<li>apple</li>
+<li>amazon</li>
+<li>Microsoft</li>
+<li>alphabet</li>
+<li>meta</li>
+</h3>
+</ol>
+</body>
+</html>
+"""
+class myhandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        print("request received")
+        self.send_response(200)
+        self.send_header('content-type', 'text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(content.encode())
+server_address = ('',8000)
+httpd = HTTPServer(server_address,myhandler)
+print("my webserver is running...")
+httpd.serve_forever()
+```
 
 
 ## OUTPUT:
+![image](https://github.com/DEVADARSHAN2/simplewebserver/assets/119432150/4ba2299a-94d2-4c97-ab70-03468fd006b8)
 
 
 ## RESULT:
